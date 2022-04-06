@@ -484,14 +484,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .ml-5 {
   margin-left: 1.25rem;
 }
+.mb-20 {
+  margin-bottom: 5rem;
+}
 .mb-1 {
   margin-bottom: 0.25rem;
 }
 .mt-2 {
   margin-top: 0.5rem;
-}
-.mb-20 {
-  margin-bottom: 5rem;
 }
 .block {
   display: block;
