@@ -1,4 +1,12 @@
-<script setup></script>
+<script setup>
+import { Navbar } from '@/src/partials'
+</script>
 <template>
-  <div>Hello World</div>
+  <Navbar />
+  <div class="pt-20">
+    <router-view></router-view>
+  </div>
 </template>
+<style lang="scss">
+@import '~styles/custom.scss';
+</style>
