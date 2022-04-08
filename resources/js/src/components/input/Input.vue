@@ -1,5 +1,7 @@
 <script setup>
-defineProps({
+import { ref, watch } from 'vue';
+
+const props = defineProps({
   modelValue: String,
   min: Number,
   max: Number,
@@ -9,11 +11,15 @@ defineProps({
   id: String
 });
 
+const value = ref(props.modelValue);
+
+watch(() => props.modelValue, () => {value.value = props.modelValue});
+
 </script>
 <template>
   <div class="input-group">
     <label class="block mb-2" :for="id" v-if="label">{{ label }}:</label>
-    <input :type="type" :id="id" :name="name" :value="modelValue" :min="min" :max="max"
+    <input :type="type" :id="id" :name="name" v-model="value" :min="min" :max="max"
       @input="$emit('update:modelValue', $event.target.value)"
     />
   </div>

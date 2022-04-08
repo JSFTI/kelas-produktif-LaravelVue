@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router';
 import MethodsEvents from '../page-components/dasar-komponen/MethodsEvents.vue';
 import { computed } from '@vue/reactivity';
 import Reactivity from '../page-components/dasar-komponen/Reactivity';
+import ChildComponents from '../page-components/dasar-komponen/ChildComponents.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -13,12 +14,11 @@ document.title = "Dasar Komponen Vue";
 const examples = [
   {name: "Methods and Events", path: "methods-events", component: MethodsEvents},
   {name: "Reactivity", path: "reactivity", component: Reactivity},
-  {name: "Child Component", path: "child-component"},
+  {name: "Child Component", path: "child-component", component: ChildComponents},
   {name: "Life-Cycle", path: "life-cycle"},
   {name: "Computed Value", path: "computed-value"},
   {name: "Watchers", path: "watchers"},
-  {name: "List Rendering", path: "list-rendering"},
-  {name: "Conditional Rendering", path: "conditional-rendering"}
+  {name: "List and Conditional Rendering", path: "list-conditional-rendering"},
 ];
 
 function handleSectionChange(path){
