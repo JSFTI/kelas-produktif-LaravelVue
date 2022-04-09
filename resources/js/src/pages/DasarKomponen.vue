@@ -7,6 +7,8 @@ import Reactivity from '../page-components/dasar-komponen/Reactivity';
 import ChildComponents from '../page-components/dasar-komponen/ChildComponents.vue';
 import LifeCycle from '../page-components/dasar-komponen/LifeCycle.vue';
 import ComputedValue from '../page-components/dasar-komponen/ComputedValue.vue';
+import Watchers from '../page-components/dasar-komponen/Watchers.vue';
+import ListConditionalRendering from '../page-components/dasar-komponen/ListConditionalRendering.vue';
 
 const route = useRoute();
 const router = useRouter();
@@ -19,8 +21,8 @@ const examples = [
   {name: "Child Component", path: "child-component", component: ChildComponents},
   {name: "Life-Cycle", path: "life-cycle", component: LifeCycle},
   {name: "Computed Value", path: "computed-value", component: ComputedValue},
-  {name: "Watchers", path: "watchers"},
-  {name: "List and Conditional Rendering", path: "list-conditional-rendering"},
+  {name: "Watchers", path: "watchers", component: Watchers},
+  {name: "List and Conditional Rendering", path: "list-conditional-rendering", component: ListConditionalRendering},
 ];
 
 function handleSectionChange(path){

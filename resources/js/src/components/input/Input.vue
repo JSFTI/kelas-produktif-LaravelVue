@@ -10,6 +10,7 @@ const props = defineProps({
   type: String,
   id: String
 });
+console.log(props.modelValue);
 
 const value = ref(props.modelValue);
 

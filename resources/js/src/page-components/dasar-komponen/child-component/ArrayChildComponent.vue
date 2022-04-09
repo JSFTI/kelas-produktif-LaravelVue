@@ -12,7 +12,7 @@ const data = ref(props.data.join(';'));
 const arrData = ref(props.data);
 
 function handleSort(){
-  props.data.sort();
+  arrData.value.sort();
   data.value = arrData.value.join(';');
   emit('change', arrData.value);
 }
