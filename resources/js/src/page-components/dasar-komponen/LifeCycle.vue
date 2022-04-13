@@ -2,8 +2,6 @@
 import { onBeforeMount, onBeforeUnmount, onBeforeUpdate, onMounted, onUnmounted, onUpdated, ref } from 'vue';
 import Button from '@/src/components/input/Button.vue';
 
-const sleep = ms => new Promise(r => setTimeout(r, ms));
-
 function handleClick(){
   console.log(`Document is clicked ${Math.random()}`);
 }

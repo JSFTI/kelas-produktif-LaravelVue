@@ -1,11 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 import Button from '@/src/components/input/Button.vue';
 
 const count = ref(0);
 
 function handleCount(){
-  count.value++;
+  count.value = count.value + 1;
 }
 </script>
 <template>

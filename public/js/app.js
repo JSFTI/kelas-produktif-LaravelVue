@@ -19718,7 +19718,6 @@ __webpack_require__.r(__webpack_exports__);
     var expose = _ref.expose;
     expose();
     var props = __props;
-    console.log(props.modelValue);
     var value = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(props.modelValue);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(function () {
       return props.modelValue;
@@ -19920,12 +19919,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var expose = _ref.expose;
     expose();
 
-    var sleep = function sleep(ms) {
-      return new Promise(function (r) {
-        return setTimeout(r, ms);
-      });
-    };
-
     function handleClick() {
       console.log("Document is clicked ".concat(Math.random()));
     }
@@ -19969,7 +19962,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
 
     var __returned__ = {
-      sleep: sleep,
       handleClick: handleClick,
       foo: foo,
       handleChange: handleChange,
@@ -20149,6 +20141,7 @@ __webpack_require__.r(__webpack_exports__);
       foo: "bar",
       baz: "fii"
     });
+    var arrayStuff = (0,vue__WEBPACK_IMPORTED_MODULE_0__.reactive)([1, 2]);
     (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(name, function () {
       console.log(name.value);
     });
@@ -20160,9 +20153,16 @@ __webpack_require__.r(__webpack_exports__);
     }, function () {
       console.log(obj.foo);
     });
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(arrayStuff, function () {
+      console.log("Changed");
+    });
+    arrayStuff.push("test");
+    arrayStuff[1] = 100;
+    console.log(arrayStuff);
     var __returned__ = {
       name: name,
       obj: obj,
+      arrayStuff: arrayStuff,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
@@ -20208,10 +20208,13 @@ __webpack_require__.r(__webpack_exports__);
 
     function handleSort() {
       arrData.value.sort();
-      data.value = arrData.value.join(';');
       emit('change', arrData.value);
     }
 
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.onUpdated)(function () {
+      arrData.value = props.data;
+      data.value = props.data.join(';');
+    });
     var __returned__ = {
       props: props,
       emit: emit,
@@ -20220,6 +20223,7 @@ __webpack_require__.r(__webpack_exports__);
       handleSort: handleSort,
       Button: _src_components_input__WEBPACK_IMPORTED_MODULE_0__.Button,
       Input: _src_components_input__WEBPACK_IMPORTED_MODULE_0__.Input,
+      isReactive: vue__WEBPACK_IMPORTED_MODULE_1__.isReactive,
       onMounted: vue__WEBPACK_IMPORTED_MODULE_1__.onMounted,
       onUpdated: vue__WEBPACK_IMPORTED_MODULE_1__.onUpdated,
       ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref,
@@ -20260,12 +20264,18 @@ __webpack_require__.r(__webpack_exports__);
         emit = _ref.emit;
     expose();
     var props = __props;
+    (0,vue__WEBPACK_IMPORTED_MODULE_1__.watch)(function () {
+      return props.data;
+    }, function () {
+      console.log("Native Changed");
+    });
     var __returned__ = {
       props: props,
       emit: emit,
       Button: _src_components_input__WEBPACK_IMPORTED_MODULE_0__.Button,
       Input: _src_components_input__WEBPACK_IMPORTED_MODULE_0__.Input,
-      ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref
+      ref: vue__WEBPACK_IMPORTED_MODULE_1__.ref,
+      watch: vue__WEBPACK_IMPORTED_MODULE_1__.watch
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -20312,17 +20322,24 @@ __webpack_require__.r(__webpack_exports__);
       // props.data.framework = "Laravel";
       // props.data.language = "PHP";
       emit('change', {
-        framework: 'Laravel',
-        language: 'PHP'
+        framework: 'Vue',
+        language: 'JavaScript',
+        test: {
+          foo: "baz"
+        }
       });
     }
 
+    (0,vue__WEBPACK_IMPORTED_MODULE_0__.watch)(props.data, function () {
+      console.log("Object Changed");
+    });
     var __returned__ = {
       props: props,
       emit: emit,
       data: data,
       handleChange: handleChange,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
+      watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
       Button: _src_components_input_Button_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
@@ -20632,6 +20649,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       Select: _src_components_input__WEBPACK_IMPORTED_MODULE_0__.Select,
       Button: _src_components_input__WEBPACK_IMPORTED_MODULE_0__.Button,
       reactive: vue__WEBPACK_IMPORTED_MODULE_1__.reactive,
+      shallowReactive: vue__WEBPACK_IMPORTED_MODULE_1__.shallowReactive,
       IconAdd: _icons_ic_baseline_add__WEBPACK_IMPORTED_MODULE_2__["default"],
       IconDelete: _icons_bi_trash__WEBPACK_IMPORTED_MODULE_3__["default"]
     };
@@ -20754,12 +20772,13 @@ __webpack_require__.r(__webpack_exports__);
     var count = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(0);
 
     function handleCount() {
-      count.value++;
+      count.value = count.value + 1;
     }
 
     var __returned__ = {
       count: count,
       handleCount: handleCount,
+      reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       Button: _src_components_input_Button_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
     };
@@ -21822,7 +21841,9 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Sort");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Button"], {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("pre", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.props.data), 1
+  /* TEXT */
+  ), _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Button"], {
     onClick: $setup.handleSort
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -21835,8 +21856,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Input"], {
     modelValue: $setup.data,
-    "onUpdate:modelValue": _cache[0] || (_cache[0] = function (v) {
-      return _ctx.modelValue = v;
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $setup.data = $event;
     }),
     onInput: _cache[1] || (_cache[1] = function ($event) {
       $setup.emit('change', $event.target.value.split(';'));
@@ -22087,7 +22108,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, "1 + 2 = " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.addTwoNumbers(1, 2)), 1
   /* TEXT */
-  )]);
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.names))]);
 }
 
 /***/ }),
@@ -22774,7 +22795,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     "class": "block",
     to: {
-      name: 'vue-router-nest'
+      name: 'vue-router-nest',
+      query: {
+        'foo': 'bar'
+      }
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {

@@ -16,7 +16,7 @@ function handleChangeRoute(){
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit possimus natus, earum soluta adipisci cum animi inventore tempora enim. Iusto, eum placeat officia vitae quaerat cupiditate ipsa amet quod tempore.
     <div v-if="route.query">{{ route.query }}</div>
     <Button @click="handleChangeRoute">Nest</Button>
-    <router-link class="block" :to="{name: 'vue-router-nest'}">
+    <router-link class="block" :to="{name: 'vue-router-nest', query: {'foo': 'bar'}}">
       Nest
     </router-link>
     <router-view></router-view>

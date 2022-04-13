@@ -17,9 +17,10 @@ function addTwoNumbers(a, b){
 </script>
 <template>
   <div>
-    <Button @click="handleGreeting()">
+    <Button @click="handleGreeting()" >
       Say Hi!
     </Button>
     <div class="mt-3">1 + 2 = {{ addTwoNumbers(1, 2) }}</div>
+    <div>{{ names }}</div>
   </div>
 </template>

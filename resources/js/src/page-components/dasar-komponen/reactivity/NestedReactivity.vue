@@ -1,6 +1,6 @@
 <script setup>
 import { Input, Radio, Select, Button } from '@/src/components/input';
-import { reactive } from 'vue';
+import { reactive, shallowReactive } from 'vue';
 import IconAdd from '~icons/ic/baseline-add';
 import IconDelete from '~icons/bi/trash';
 
@@ -23,7 +23,7 @@ const state = reactive({
 const newClass = reactive({
   abbr: "",
   name: ""
-})
+});
 
 function handleAddNewClass(){
   state.classes.push({...newClass});
@@ -73,6 +73,7 @@ function deleteAllClasses(){
 
     <div class="mt-3">Student Classes</div>
     <div class="flex flex-col gap-1">
+
       <div class="flex gap-2" v-for="(clas, i) in state.classes" :key="i">
         <Input v-model="clas.abbr" class="w-12" />
         <Input v-model="clas.name" />
@@ -80,6 +81,7 @@ function deleteAllClasses(){
           <IconDelete />
         </Button>
       </div>
+      
       <div class="flex gap-2">
         <Input v-model="newClass.abbr" class="w-12" />
         <Input v-model="newClass.name" />

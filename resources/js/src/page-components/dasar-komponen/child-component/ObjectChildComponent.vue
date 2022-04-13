@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue';
+import {ref, watch} from 'vue';
 import Button from '@/src/components/input/Button.vue';
 
 const props = defineProps({
@@ -19,8 +19,10 @@ function handleChange(){
   // props.data.framework = "Laravel";
   // props.data.language = "PHP";
 
-  emit('change', {framework: 'Laravel', language: 'PHP'});
+  emit('change', {framework: 'Vue', language: 'JavaScript', test: {foo: "baz"}});
 }
+
+watch(props.data, () => {console.log("Object Changed")});
 </script>
 <template>
   <div>

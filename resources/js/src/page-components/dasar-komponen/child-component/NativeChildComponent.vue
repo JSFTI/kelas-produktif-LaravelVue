@@ -1,12 +1,14 @@
 <script setup>
 import {Button, Input} from '@/src/components/input';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const props = defineProps({
   data: String
 });
 
 const emit = defineEmits(['change']);
+
+watch(() => props.data, () => {console.log("Native Changed");})
 
 </script>
 <template>

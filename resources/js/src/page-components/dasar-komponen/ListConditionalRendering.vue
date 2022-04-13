@@ -25,12 +25,15 @@ function handleAdd(){
     </div>
     <div><Input v-model="newEntry" /><Button @click="handleAdd">Add New Entry</Button></div>
   </div>
+
   <div class="mt-10">
     <h1>Contoh Conditional Rendering</h1>
     <Radio label="merah" value="merah" v-model="warna" name="warna-merah" id="warna-merah" />
     <Radio label="biru" value="biru" v-model="warna" name="warna-biru" id="warna-biru" />
     <Radio label="hijau" value="hijau" v-model="warna" name="warna-hijau" id="warna-hijau" />
-    <div v-if="warna === 'merah'" class="bg-red-800 h-10 w-10"></div>
+
+    <div v-if="warna === 'merah'" class="bg-red-800 h-10 w-10">
+    </div>
     <div v-else-if="warna === 'biru'" class="bg-blue-800 h-10 w-10"></div>
     <div v-else class="bg-green-800 h-10 w-10"></div>
   </div>

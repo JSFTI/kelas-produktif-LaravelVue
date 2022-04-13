@@ -5,8 +5,12 @@ import Input from '@/src/components/input/Input.vue';
 const name = ref("Jason");
 const obj = reactive({
   foo: "bar",
-  baz: "fii"
+  baz: "fii",
 });
+
+const arrayStuff = reactive([
+  1, 2
+]);
 
 watch(name, () => {
   console.log(name.value);
@@ -19,6 +23,13 @@ watch(obj, () => {
 watch(() => obj.foo, () => {
   console.log(obj.foo);
 });
+
+watch(arrayStuff, () => {console.log("Changed");});
+
+arrayStuff.push("test");
+arrayStuff[1] = 100;
+console.log(arrayStuff);
+
 </script>
 <template>
   <h1 class="text-xl">Buka console browser untuk melihat cara kerja watch</h1>
