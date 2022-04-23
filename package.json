@@ -12,6 +12,7 @@
     "devDependencies": {
         "@iconify-json/bi": "^1.1.1",
         "@iconify-json/charm": "^1.1.1",
+        "@iconify-json/gg": "^1.1.1",
         "@iconify-json/ic": "^1.1.1",
         "autoprefixer": "^10.4.4",
         "axios": "^0.25",
@@ -28,6 +29,11 @@
     "dependencies": {
         "sass": "^1.49.11",
         "sass-loader": "^12.6.0",
-        "vue-router": "^4.0.14"
+        "skeleton-loader-vue": "^1.0.10",
+        "uninstall": "^0.0.0",
+        "vue-router": "^4.0.14",
+        "vue-skeleton-loader": "^1.0.0",
+        "vue-skeletor": "^1.0.6",
+        "vue3-editor": "^0.1.1"
     }
 }

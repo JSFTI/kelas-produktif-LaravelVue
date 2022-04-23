@@ -8,6 +8,7 @@ const collapsed = ref(true);
 const pages = [
   {path: '/dasar-komponen', name: "Dasar Komponen Vue"},
   {path: '/vue-router', name: "Vue Router"},
+  {path: '/posts', name: "Posts"}
 ];
 
 function handleCollapse(){
@@ -38,7 +39,7 @@ function handleCollapse(){
 </template>
 <style scoped lang="scss">
   .navbar{
-    @apply h-14 shadow-lg flex items-center fixed w-full bg-white;
+    @apply h-14 shadow-lg flex items-center fixed w-full bg-white z-50;
     .navbar-logo{
       @apply ml-7 font-semibold;
     }

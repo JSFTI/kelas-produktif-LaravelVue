@@ -22,14 +22,12 @@ document.title = "Kelas Produktif HIMATIF";
     <div class="mt-4 text-2xl">Topik Belajar</div>
     <section class="flex justify-center gap-5 flex-wrap mt-3">
       <Card v-for="topic in topics" class="w-52">
-        <template v-slot:body>
-          <div class="w-44 h-44 grid items-center mb-4">
-            <img :src="topic.imgSrc" />
-          </div>
-          <hr />
-          <h4 class="text-xl font-bold mb-2">{{ topic.title }}</h4>
-          <div>{{ topic.subtitle }}</div>
-        </template>
+        <div class="grid place-items-center">
+          <img class="w-48 h-48" :src="topic.imgSrc" />
+        </div>
+        <hr />
+        <h4 class="text-xl font-bold mb-2">{{ topic.title }}</h4>
+        <div>{{ topic.subtitle }}</div>
       </Card>
     </section>
   </header>
