@@ -4,18 +4,15 @@ import Card from '@/src/components/view/Card.vue';
 import Button from '@/src/components/input/Button.vue';
 import { isEmpty } from 'lodash';
 
-const props = defineProps({
+defineProps({
   post: Object
 });
 </script>
 <template>
-  <Card class="w-96" v-if="isEmpty(post)">
-    <template v-slot:title>
-      {{ post.title }}
-    </template>
+  <Card class="w-96" no-title v-if="!isEmpty(post)">
     <div class="relative">
       <img :src="post.image" />
-      <router-link :to="{name: 'post', params: {post: post.id}}">
+      <router-link :to="{name: 'post', params: {post: post.id, slug: post.slug}}">
         <Button type="button" class="read-button" iconed>
           <template v-slot:icon>
             <IconReadme />
@@ -23,9 +20,12 @@ const props = defineProps({
         </Button>
       </router-link>
     </div>
-    <p class="m-4 mt-8">{{ post.content.length > 100 ? post.content.substring(0, 100) + '...' : post.content }}</p>
+    <div class="mb-4 mt-8 mx-2">
+      <p class="text-xl font-bold">{{ post.title }}</p>
+      <p class="italic mt-2">Writer: {{ post.writer.username }}</p>    
+    </div>
   </Card>
-  <Card class="w-96" v-else>
+  <Card class="w-96" no-title v-else>
     <template v-slot:title>
       <Skeletor width="250" height="20" />
     </template>

@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 const path = require('path');
+const Components = require('unplugin-vue-components/webpack');
+const {ElementPlusResolver} = require('unplugin-vue-components/resolvers');
 
 require('laravel-mix-tailwind');
 
@@ -10,6 +12,7 @@ mix.alias({
 
 mix.js('resources/js/app.js', 'public/js')
     .vue()
+    .sourceMaps()
     .postCss('resources/css/app.css', 'public/css', [
         require('tailwindcss'),
         require('autoprefixer')
@@ -17,6 +20,15 @@ mix.js('resources/js/app.js', 'public/js')
     .tailwind()
     .webpackConfig({
         plugins: [
-            require('unplugin-icons/webpack')({autoInstall: true})
+            require('unplugin-icons/webpack')({autoInstall: true}),
+            Components({
+                resolvers: [ElementPlusResolver()],
+                dts:  true,
+                dirs: [
+                    'resources/js/src/partials',
+                    'resources/js/src/page-components',
+                    'resources/js/src/components'
+                ]
+            })
         ]
     });

@@ -1,7 +1,11 @@
-<script setup></script>
+<script setup>
+defineProps({
+  noTitle: Boolean
+});
+</script>
 <template>
   <div class="card">
-    <div class="title">
+    <div class="title" v-if="!noTitle">
       <slot name="title"></slot>
     </div>
     <div>

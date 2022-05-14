@@ -2,18 +2,28 @@
 import { ref } from 'vue';
 import { Button } from '@/src/components/input'
 import IconHamburger from '~icons/charm/menu-hamburger';
+import IconPowerSettingsNew from '~icons/material-symbols/power-settings-new';
+import { useUser } from '@/stores/user';
+import axios from 'axios';
+
+const user = useUser();
 
 const collapsed = ref(true);
 
 const pages = [
-  {path: '/dasar-komponen', name: "Dasar Komponen Vue"},
-  {path: '/vue-router', name: "Vue Router"},
   {path: '/posts', name: "Posts"}
 ];
 
 function handleCollapse(){
   document.body.classList.toggle('no-scroll');
   collapsed.value = !collapsed.value;
+}
+
+function handleLogout(){
+  axios.post('/logout')
+    .then(() => {
+      user.$reset();
+    });
 }
 </script>
 <template>
@@ -32,6 +42,15 @@ function handleCollapse(){
           <li v-for="route in pages" :key="route.name" class="navbar-nav-item">
             <router-link :to="route.path">{{ route.name }}</router-link>
           </li>
+          <li class="navbar-nav-item" v-if="user.id === null">
+            <router-link :to="'/register'">Register/Login</router-link>
+          </li>
+          <li class="navbar-nav-item" v-if="user.id !== null">
+            <router-link :to="'/profil'">Profil</router-link>
+          </li>
+          <li class="navbar-nav-item" v-if="user.id !== null">
+            <a href="javascript:void(0)" @click="handleLogout"><IconPowerSettingsNew /></a>
+          </li>
         </ul>
       </div>
     </nav>
@@ -41,7 +60,7 @@ function handleCollapse(){
   .navbar{
     @apply h-14 shadow-lg flex items-center fixed w-full bg-white z-50;
     .navbar-logo{
-      @apply ml-7 font-semibold;
+      @apply ml-7 font-semibold text-black;
     }
 
     .navbar-nav{
@@ -83,6 +102,10 @@ function handleCollapse(){
 
       .navbar-nav-list{
         width: 175px;
+
+        .navbar-nav-item a{
+          @apply text-black;
+        }
 
         @screen md{
           @apply md:flex gap-7 w-auto

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
@@ -21,9 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('test', TestController::class)->name('test');
-Route::get('test1', [TestController::class, 'test1'])->name('test1');
+Route::post('register', [AuthController::class, 'register']);
+Route::post('logout', [AuthController::class, 'logout']);
+Route::post('login', [AuthController::class, 'login']);
 
+
+
+Route::delete('posts/images/{image}', [PostController::class, 'deleteImage']);
+Route::post('posts/images', [PostController::class, 'postImage']);
 Route::apiResource('posts', PostController::class);
 Route::apiResource('posts.comments', CommentController::class)->shallow();
 

@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::table('posts', function (Blueprint $table) {
             $table->string('slug');
-            $table->integer('shares');
+            $table->integer('shares')->default(0);
+            $table->bigInteger('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->on('users')->references('id')->nullOnDelete()->cascadeOnUpdate();
         });
     }
 
@@ -32,6 +34,10 @@ return new class extends Migration
             }
             if(Schema::hasColumn('posts', 'shares')){
                 $table->dropColumn('shares');
+            }
+            if(Schema::hasColumn('posts', 'user_id')){
+                $table->dropForeign(['user_id']);
+                $table->dropColumn('user_id');
             }
         });
     }

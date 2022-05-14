@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Http\File;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Translation\Exception\NotFoundResourceException;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('resource/image/{resource}/{name}', function($resource, $name){
+    $path = storage_path("app/$resource/$name");
+    if(!file_exists($path)){
+        return response('Not Found', 404);
+    }
+    return response()->file($path);
+})->name('resource.image');;
 
 Route::get('{any}', function () {
     return view('welcome');

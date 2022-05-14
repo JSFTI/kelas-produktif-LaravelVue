@@ -1,6 +1,12 @@
+@import './theme';
+
 .no-scroll{
   overflow: hidden;
   width: 100vh;
+}
+
+.color-danger{
+  color: $dangerColour;
 }
 
 a{

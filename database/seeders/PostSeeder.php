@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory;
@@ -24,6 +25,8 @@ class PostSeeder extends Seeder
         Post::truncate();
         DB::beginTransaction();
 
+        $writer = User::where('username', 'admin')->first();
+
         $posts = [];
         for($i = 0; $i < 40; $i++){
             $posts[] = [
@@ -32,6 +35,7 @@ class PostSeeder extends Seeder
                 'content' => $faker->text(400),
                 'slug' => $faker->sentence(),
                 'shares' => $faker->numberBetween(0, 100),
+                'user_id' => $writer->id
             ];
         }
 
